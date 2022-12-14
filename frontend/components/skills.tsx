@@ -25,6 +25,9 @@ import {
   SiHtml5,
   SiCss3,
   SiRedux,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
 } from "react-icons/si";
 import { DiJavascript1 } from "react-icons/di";
 
@@ -68,14 +71,14 @@ export default function Skills() {
                 }
               >
                 <Feature
-                  icon={<Icon as={SiHtml5} color={"yellow.500"} w={5} h={5} />}
+                  icon={<Icon as={SiExpress} color={"yellow.500"} w={5} h={5} />}
                   iconBg={useColorModeValue("yellow.100", "yellow.900")}
-                  text={"HTML 5"}
+                  text={"Express Js"}
                 />
                 <Feature
-                  icon={<Icon as={SiCss3} color={"green.500"} w={5} h={5} />}
+                  icon={<Icon as={SiTypescript} color={"green.500"} w={5} h={5} />}
                   iconBg={useColorModeValue("green.100", "green.900")}
-                  text={"CSS 3"}
+                  text={"Typescript"}
                 />
                 <Feature
                   icon={
@@ -103,16 +106,16 @@ export default function Skills() {
                   text={"Node Js"}
                 />
                 <Feature
-                  icon={<Icon as={SiExpress} color={"green.500"} w={5} h={5} />}
+                  icon={<Icon as={SiReact} color={"green.500"} w={5} h={5} />}
                   iconBg={useColorModeValue("green.100", "green.900")}
-                  text={"Express Js"}
+                  text={"React Js"}
                 />
                 <Feature
                   icon={
-                    <Icon as={SiMongodb} color={"purple.500"} w={5} h={5} />
+                    <Icon as={SiNextdotjs} color={"purple.500"} w={5} h={5} />
                   }
                   iconBg={useColorModeValue("purple.100", "purple.900")}
-                  text={"Mongo Db"}
+                  text={"Next Js"}
                 />
               </Stack>
             </Box>
