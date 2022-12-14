@@ -15,6 +15,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
+import ThemeToggleButton from './theme-toogle-button'
 
 interface LinkItemProps {
   href: string
@@ -23,11 +24,11 @@ interface LinkItemProps {
   children: React.ReactNode
 }
 
-const LinkItem = ({ href, path, target, children, ...props }: LinkItemProps&any) => {
+const LinkItem = ({ href, path, target, children, ...props }: LinkItemProps & any) => {
   const active = path === href
   const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
   return (
-    <NextLink href={href} passHref scroll={false}>
+    <NextLink href={href} passHref scroll={false} legacyBehavior>
       <Link
         p={2}
         bg={active ? 'grassTeal' : undefined}
@@ -38,7 +39,7 @@ const LinkItem = ({ href, path, target, children, ...props }: LinkItemProps&any)
         {children}
       </Link>
     </NextLink>
-  )
+  );
 }
 
 interface NavbarProps {
@@ -53,6 +54,8 @@ const Navbar = (props: NavbarProps) => {
       position="fixed"
       as="nav"
       w="100%"
+      top={0}
+      left={0}
       bg={useColorModeValue('#ffffff40', '#20202380')}
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={2}
@@ -60,15 +63,14 @@ const Navbar = (props: NavbarProps) => {
     >
       <Container
         display="flex"
-        p={2}
-        maxW="container.md"
-        flexWrap={{ base: 'wrap'}}
-        alignContent="center"
-        alignItems={"center"}
+        p={3}
+        as={Flex}
+        flexWrap={{ base: 'wrap' }}
+        alignItems="center"
         justifyContent="space-between"
       >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={'tighter'}>
+        <Flex align="center" mr={8}>
+          <Heading as="h1" size="md" letterSpacing={'tighter'}>
             <Logo />
           </Heading>
         </Flex>
@@ -78,7 +80,7 @@ const Navbar = (props: NavbarProps) => {
           display={{ base: 'none', md: 'flex' }}
           width={{ base: 'full', md: 'auto' }}
           alignItems="center"
-          flexGrow={1}
+          flexGrow={3}
           mt={{ base: 4, md: 0 }}
         >
           <LinkItem href="/works" path={path}>
@@ -103,7 +105,9 @@ const Navbar = (props: NavbarProps) => {
           </LinkItem>
         </Stack>
 
-        <Box flex={1} alignSelf="right" alignContent={"right"}>
+        <Box>
+          <ThemeToggleButton />
+
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy id="navbar-menu">
               <MenuButton
@@ -113,16 +117,16 @@ const Navbar = (props: NavbarProps) => {
                 aria-label="Options"
               />
               <MenuList>
-                <NextLink href="/" passHref>
+                <NextLink href="/" passHref legacyBehavior>
                   <MenuItem as={Link}>About</MenuItem>
                 </NextLink>
-                <NextLink href="/works" passHref>
+                <NextLink href="/works" passHref legacyBehavior>
                   <MenuItem as={Link}>Works</MenuItem>
                 </NextLink>
-                <NextLink href="/posts" passHref>
+                <NextLink href="/posts" passHref legacyBehavior>
                   <MenuItem as={Link}>Posts</MenuItem>
                 </NextLink>
-                <NextLink href="https://uses.craftz.dog/" passHref>
+                <NextLink href="https://uses.craftz.dog/" passHref legacyBehavior>
                   <MenuItem as={Link}>Uses</MenuItem>
                 </NextLink>
                 <MenuItem
@@ -137,7 +141,7 @@ const Navbar = (props: NavbarProps) => {
         </Box>
       </Container>
     </Box>
-  )
+  );
 }
 
 export default Navbar

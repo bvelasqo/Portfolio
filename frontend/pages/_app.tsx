@@ -2,14 +2,29 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import MainLayout from '../components/layouts/main'
-import { baseTheme } from '@chakra-ui/react'
+import theme from '../libs/theme'
+import Fonts from '../components/fonts'
+import Chakra from '../components/chakra'
+import { AnimatePresence } from 'framer-motion'
 
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
-    <ChakraProvider>
+    <Chakra cookies={pageProps.cookies}>
+      <Fonts />
       <MainLayout router={router}>
-        <Component {...pageProps} key={router.route} />
+        <AnimatePresence
+          exitBeforeEnter
+          initial={true}
+          onExitComplete={() => {
+            if (typeof window !== 'undefined') {
+              window.scrollTo({ top: 0 })
+            }
+          }}
+        >
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+
       </MainLayout>
-    </ChakraProvider>
+    </Chakra>
   )
 }

@@ -12,28 +12,36 @@ const LogoBox = styled.span`
   line-height: 20px;
   padding: 10px;
 
+  > img {
+    transition: transform 0.2s;
+  }
+
   &:hover img {
     transform: rotate(20deg);
   }
 `;
 
-const Logo = () => (
+
+const Logo = () => {
+  const footPrintImage = useColorModeValue("/logo.png", "/corona.png");
+  return (
   <Link href="/">
-    <a href="">
-      <LogoBox>
-        <>
-        <Image src="/logo.png" alt="logo" width="32" height="32" />
-        <Text
-          color={useColorModeValue("gray.800", "whiteAlpha.900")}
-          fontWeight="bold"
-          ml={3}>
-          Brandon Velasquez
-        </Text>
-        </>
-       
-      </LogoBox>
-    </a>
-  </Link>
-);
+
+    <LogoBox>
+      <>
+      <Image src={footPrintImage} alt="logo" width="32" height="32" style={{borderRadius: "50%"}} />
+      <Text
+        color={useColorModeValue("gray.800", "whiteAlpha.900")}
+        fontWeight="bold"
+        letterSpacing="wide"
+        ml={3} mt={2}>
+        Brand.ondev
+      </Text>
+      </>
+     
+    </LogoBox>
+
+  </Link>)
+};
 
 export default Logo;
