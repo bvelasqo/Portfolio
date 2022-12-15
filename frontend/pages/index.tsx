@@ -24,7 +24,8 @@ export default function Home() {
         alignContent="center" textAlign="center" textColor="blackAlpha.900"
         transition={'all 0.2s ease-in-out'}
         _hover={{
-          bg: useColorModeValue('yellow.500', '#805aa0'),
+          bg: useColorModeValue('rgb(0, 0, 140)', '#805aa0'),
+          color: 'white',
           transform: 'scale(1.05)',
         }}
       >
@@ -71,7 +72,7 @@ export default function Home() {
           mb={4}
           variant="section-title">Work</Heading>
         <Paragraph>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius voluptas excepturi, illum itaque modi, quae blanditiis repudiandae, amet quo quos totam? Est vero nulla quaerat exercitationem reiciendis quis iusto? Est.
+          Due to the fact that I am a person who loves to learn, I have knowledge in different areas, languages and frameworks according to the projects that I have carried out. I really like the software planning and analysis part, I always like to design well what I am going to do and how it is going to work to optimize it as much as possible according to my experience.
         </Paragraph>
         <Box
           alignSelf={{ base: 'center', md: 'flex-end' }}
@@ -81,10 +82,11 @@ export default function Home() {
           }}
           textAlign={{ base: 'center', md: 'right' }}
           alignItems={{ base: 'center', md: 'center' }} my={4}>
-          <NextLink href="/work" passHref>
+          <NextLink href="/works" passHref>
             <Button rightIcon={<ChevronRightIcon />} colorScheme={useColorModeValue('purple', 'yellow')}
               _hover={{
-                bg: useColorModeValue('yellow.500', '#805aa0'),
+                bg: useColorModeValue('rgb(0, 0, 140)', '#805aa0'),
+                color: 'white',
                 transform: 'scale(1.05)',
               }}>See my work</Button>
           </NextLink>
@@ -95,10 +97,10 @@ export default function Home() {
         <Heading as="h3"
           mb={4}
           variant="section-title">
-            About me
-          </Heading>
+          About me
+        </Heading>
         <Paragraph style={{ marginBottom: '1.3rem' }}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius voluptas excepturi, illum itaque modi, quae blanditiis repudiandae, amet quo quos totam? Est vero nulla quaerat exercitationem reiciendis quis iusto? Est.
+          Primarily web software developer, with very good programming logic and always eager to learn; with high capacity for self-learning and good communication skills.
         </Paragraph>
         <BioSection _hover={{ bgColor: useColorModeValue('rgba(226,206,227,0.9)', 'rgba(57,57,0,0.8)') }} >
           <BioYear>2001</BioYear>

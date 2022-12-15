@@ -1,5 +1,6 @@
 import { Mesh } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import * as THREE from 'three'
 
 export function loadGLTFModel(
   scene: any,
@@ -22,7 +23,7 @@ export function loadGLTFModel(
         scene.add(obj)
 
         obj.traverse(function (child) {
-          if ((child as Mesh).isMesh) {
+          if (child instanceof THREE.Mesh) {
             child.castShadow = castShadow
             child.receiveShadow = receiveShadow
           }

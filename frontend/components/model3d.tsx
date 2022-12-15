@@ -37,12 +37,7 @@ const Model3d = () => {
         antialias: true,
         stencil: true,
         depth: true,
-        precision: 'highp',
-        preserveDrawingBuffer: false,
-        failIfMajorPerformanceCaveat: true,
-        logarithmicDepthBuffer: true,
         powerPreference: 'high-performance',
-        premultipliedAlpha: false,
       })
       renderer.setPixelRatio(window.devicePixelRatio)
       renderer.setSize(scW, scH)
@@ -50,53 +45,49 @@ const Model3d = () => {
       container.appendChild(renderer.domElement)
       refRenderer.current = renderer
       const scene = new THREE.Scene()
-
-      const target = new THREE.Vector3(0, 2, 0)
+      const target = new THREE.Vector3(0, 0, 0)
       const initialCameraPosition = new THREE.Vector3(
         20 * Math.sin(0.2 * Math.PI),
         10,
         20 * Math.cos(0.2 * Math.PI)
-      )
+        )
+        // 640 -> 240
+        // 8   -> 6
+        const scale = scH * 0.0014
+        const camera = new THREE.OrthographicCamera(
+          -scale,
+          scale,
+          scale,
+          -scale,
+          0.01,
+          50000
+          )
+          camera.position.copy(initialCameraPosition)
+          camera.lookAt(target)
+          const ambientLight = new THREE.AmbientLight( 0xfff, 1 )
+          const light = new THREE.ColorKeyframeTrack( '.color', [ 0, 1, 2 ], [ 1, 0, 0, 0, 1, 0, 0, 0, 1 ] )
+          const clip = new THREE.AnimationClip( 'Action', -1, [ light ] )
+          const mixer = new THREE.AnimationMixer( ambientLight )
+          const action = mixer.clipAction( clip )
+          action.play()
 
-      // 640 -> 240
-      // 8   -> 6
-      const scale = scH * 0.005 + 1.5
-      const camera = new THREE.OrthographicCamera(
-        -scale,
-        scale,
-        scale,
-        -scale,
-        0.01,
-        50000
-      )
-
-      camera.position.copy(initialCameraPosition)
-      camera.lookAt(target)
-
-      const ambientLight = new THREE.AmbientLight( 0xfff, 1 )
-      const light = new THREE.ColorKeyframeTrack( '.color', [ 0, 1, 2 ], [ 1, 0, 0, 0, 1, 0, 0, 0, 1 ] )
-      const clip = new THREE.AnimationClip( 'Action', -1, [ light ] )
-      const mixer = new THREE.AnimationMixer( ambientLight )
-      const action = mixer.clipAction( clip )
-      action.play()
-      scene.add(ambientLight)
-      scene.add(camera)
-
-      const controls = new OrbitControls(camera, renderer.domElement)
-      controls.autoRotate = true
-      controls.target = target
-
-      loadGLTFModel(scene, urlDogGLB, {
-        receiveShadow: false,
-        castShadow: false,
-      }).then(() => {
-        animate()
-        setLoading(false)
-      })
-
-      let req: number | null = null
-      let frame = 0
-      const animate = () => {
+          scene.add(ambientLight)
+          scene.add(camera)
+          const controls = new OrbitControls(camera, renderer.domElement)
+          controls.autoRotate = true
+          controls.target = target
+          loadGLTFModel(scene, urlDogGLB, {
+            receiveShadow: false,
+            castShadow: false,
+          }).then(() => {
+            animate()
+            setLoading(false)
+          })
+          // change color of object in scene
+          
+          let req: number | null = null
+          let frame = 0
+          const animate = () => {
         req = requestAnimationFrame(animate)
 
         frame = frame <= 100 ? frame + 1 : frame

@@ -27,13 +27,15 @@ interface LinkItemProps {
 const LinkItem = ({ href, path, target, children, ...props }: LinkItemProps & any) => {
   const active = path === href
   const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+  const inactiveBg = useColorModeValue('purple.300', 'yellow.300')
   return (
     <NextLink href={href} passHref scroll={false} legacyBehavior>
       <Link
         p={2}
-        bg={active ? 'grassTeal' : undefined}
+        bg={active ? inactiveBg : undefined}
         color={active ? '#202023' : inactiveColor}
         target={target}
+        borderRadius="md"
         {...props}
       >
         {children}
@@ -56,8 +58,9 @@ const Navbar = (props: NavbarProps) => {
       w="100%"
       top={0}
       left={0}
-      bg={useColorModeValue('#ffffff40', '#20202380')}
-      css={{ backdropFilter: 'blur(10px)' }}
+      bg={useColorModeValue('#00008c60', '#20202380')}
+      color={'blue.800'}
+      css={{ backdropFilter: 'blur(20px)' }}
       zIndex={2}
       {...props}
     >
@@ -83,25 +86,14 @@ const Navbar = (props: NavbarProps) => {
           flexGrow={3}
           mt={{ base: 4, md: 0 }}
         >
+           <LinkItem href="/" path={path}>
+            About me
+          </LinkItem>
           <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
-          <LinkItem href="/posts" path={path}>
-            Posts
-          </LinkItem>
-          <LinkItem href="https://uses.craftz.dog/">
-            Uses
-          </LinkItem>
-          <LinkItem
-            target="_blank"
-            href="https://github.com/craftzdog/craftzdog-homepage"
-            path={path}
-            display="inline-flex"
-            alignItems="center"
-            style={{ gap: 4 }}
-            pl={2}
-          >
-            Source
+          <LinkItem href="/contact" path={path}>
+            Contact
           </LinkItem>
         </Stack>
 
@@ -123,18 +115,9 @@ const Navbar = (props: NavbarProps) => {
                 <NextLink href="/works" passHref legacyBehavior>
                   <MenuItem as={Link}>Works</MenuItem>
                 </NextLink>
-                <NextLink href="/posts" passHref legacyBehavior>
-                  <MenuItem as={Link}>Posts</MenuItem>
+                <NextLink href="/contact" passHref legacyBehavior>
+                  <MenuItem as={Link}>Contact</MenuItem>
                 </NextLink>
-                <NextLink href="https://uses.craftz.dog/" passHref legacyBehavior>
-                  <MenuItem as={Link}>Uses</MenuItem>
-                </NextLink>
-                <MenuItem
-                  as={Link}
-                  href="https://github.com/craftzdog/craftzdog-homepage"
-                >
-                  View Source
-                </MenuItem>
               </MenuList>
             </Menu>
           </Box>

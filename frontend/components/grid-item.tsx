@@ -35,15 +35,20 @@ interface WorkGridItemProps {
   children: React.ReactNode
   id: string
   title: string
-  thumbnail: string
+  thumbnail: string,
+  url: string
 }
 
-export const WorkGridItem = ({ children, id, title, thumbnail }: WorkGridItemProps) => (
-  <Box w="100%" textAlign="center">
-    <NextLink href={`/works/${id}`} passHref scroll={false}>
+export const WorkGridItem = ({ children, id, title, thumbnail, url }: WorkGridItemProps) => (
+  <Box w="100%" textAlign="center" style={{ transition: 'all 0.2s ease-in-out' }} _hover={{ transform: 'scale(1.05)' }}>
+    {/* <NextLink href={`/works/${id}`} passHref scroll={false} legacyBehavior> */}
+    <NextLink href={url} passHref scroll={false} legacyBehavior>
       <LinkBox cursor="pointer">
         <Image
           src={thumbnail}
+          width={400}
+          height={300}
+          blurDataURL={thumbnail}
           alt={title}
           className="grid-item-thumbnail"
           placeholder="blur"

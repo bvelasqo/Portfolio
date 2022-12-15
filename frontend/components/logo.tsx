@@ -31,7 +31,7 @@ const Logo = () => {
       <>
       <Image src={footPrintImage} alt="logo" width="32" height="32" style={{borderRadius: "50%"}} />
       <Text
-        color={useColorModeValue("gray.800", "whiteAlpha.900")}
+        color={useColorModeValue("blue.800", "whiteAlpha.900")}
         fontWeight="bold"
         letterSpacing="wide"
         ml={3} mt={2}>

@@ -39,7 +39,7 @@ interface FeatureProps {
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   return (
-    <Stack direction={"row"} align={"center"}>
+    <Stack direction={"row"} align={"center"} style={{ wordWrap: "normal", maxWidth: "100%", minWidth: "100%" }}>
       <Flex
         w={8}
         h={8}
@@ -60,8 +60,8 @@ export default function Skills() {
     <Container py={12} id="Skills" style={{ marginLeft: "0", paddingInlineStart: "0" }}>
       <SimpleGrid columns={{ base: 2, md: 2 }} spacing={{ base: 12, lg: 32 }}>
         <Stack spacing={4}>
-          <Flex gap={10}>
-            <Box>
+          <Flex gap={10} direction={{ base: "row", md: "row" }}>
+            <Box style={{ marginLeft: "4px" , minWidth: "100%"}}>
               <Stack
                 spacing={4}
                 divider={
@@ -69,6 +69,7 @@ export default function Skills() {
                     borderColor={useColorModeValue("gray.100", "gray.700")}
                   />
                 }
+                width="100%"
               >
                 <Feature
                   icon={<Icon as={SiExpress} color={"yellow.500"} w={5} h={5} />}
@@ -89,9 +90,8 @@ export default function Skills() {
                 />
               </Stack>
             </Box>
-            <Box
-                style={{ marginLeft: "4px" }}
-                >
+            <Box style={{ marginLeft: "4px" , minWidth: "100%"}}>
+
               <Stack
                 spacing={4}
                 divider={
