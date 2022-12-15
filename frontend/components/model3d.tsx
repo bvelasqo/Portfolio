@@ -37,7 +37,6 @@ const Model3d = () => {
         antialias: true,
         stencil: true,
         depth: true,
-        powerPreference: 'high-performance',
       })
       renderer.setPixelRatio(window.devicePixelRatio)
       renderer.setSize(scW, scH)
