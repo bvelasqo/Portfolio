@@ -10,11 +10,12 @@ import foroImage from '../public/foro.png'
 import profileImage from '../public/logo.jpg'
 import udemImage from '../public/udem.jpg'
 import todolistImage from '../public/todolist.png'
+import pokeball from '../public/pokeball.webp'
 
 const Works = () => (
   <Layout title="Works">
     <Container>
-      <Heading as="h3" fontSize={20} mb={4}>
+      <Heading as="h1" fontSize={32} mb={4} variant="section-title">
         Works
       </Heading>
 
@@ -22,12 +23,18 @@ const Works = () => (
 
         <Section>
           <WorkGridItem
-          url='https://forojoventu.com/'
+            url='https://forojoventu.com/'
             id="walknote"
             title="Foro joven tú"
             thumbnail={foroImage.src}
           >
             A website for a forum event in Cartagena de Indias Colombia
+          </WorkGridItem>
+        </Section>
+
+        <Section delay={0.1}>
+          <WorkGridItem id="menkiki" thumbnail={pokeball.src} title="Pokemon page" url='https://pokemon3d-page-1j81vv7wb-bvelasqo.vercel.app/'>
+            An implementation of three js for a pokemon page
           </WorkGridItem>
         </Section>
 
@@ -81,7 +88,7 @@ const Works = () => (
         </Section>
         <Section delay={0.3}>
           <WorkGridItem id="styly" thumbnail={todolistImage.src} title="Todo List app server" url='https://gitlab.com/brandon.velasquez.osorio/TodoListApp-server'>
-          TodoListApp server with an api that makes available the necessary data for the proper functioning of the software
+            TodoListApp server with an api that makes available the necessary data for the proper functioning of the software
           </WorkGridItem>
         </Section>
       </SimpleGrid>

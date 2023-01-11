@@ -2,14 +2,9 @@ import { Box, Button, chakra, Container, Heading, IconButton, List, ListItem, Si
 import Image from 'next/image'
 import Paragraph from '../components/paragraph'
 import Section from '../components/section'
-import styles from '../styles/Home.module.css'
 import NextLink from 'next/link'
-import { AddIcon, ChatIcon, ChevronRightIcon, InfoIcon, SunIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 import { BioSection, BioYear } from '../components/bio'
-import Link from 'next/link'
-import { GridItem } from '../components/grid-item'
-import thumbYouTube from 'public/logo.png'
-import thumbInkdrop from 'public/logo.jpg'
 import Skills from '../components/skills'
 
 
@@ -31,7 +26,9 @@ export default function Home() {
       >
         Hello, I&apos;m a software developer born in Medellin, Colombia
       </Box>
-      <Box display={{ md: 'flex' }} justifyContent="space-between" alignItems="center">
+      <Box display={{ md: 'flex' }} justifyContent="space-between" alignItems="center" transition={'all 0.2s ease-in-out'} _hover={{
+        transform: 'scale(1.05)',
+      }}>
         <Box flexGrow={1}
           textAlign={{ base: 'center', md: 'left' }}
         >
@@ -128,7 +125,7 @@ export default function Home() {
           Skills
         </Heading>
         <Paragraph>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum alias inventore
+          I have knowledge in different areas, languages and frameworks according to the projects that I have carried out. I really like the software planning and analysis part, I always like to design well what I am going to do and how it is going to work to optimize it as much as possible according to my experience.
         </Paragraph>
         <Skills />
       </Section>

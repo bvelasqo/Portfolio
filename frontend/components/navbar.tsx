@@ -50,6 +50,8 @@ interface NavbarProps {
 
 const Navbar = (props: NavbarProps) => {
   const { path } = props
+  const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+  const inactiveBg = useColorModeValue('purple.300', 'yellow.300')
 
   return (
     <Box
@@ -108,15 +110,19 @@ const Navbar = (props: NavbarProps) => {
                 variant="outline"
                 aria-label="Options"
               />
-              <MenuList>
+              <MenuList bg={path === "/" ? inactiveBg : undefined}
+        color={path === "/" ? '#202023' : inactiveColor}>
                 <NextLink href="/" passHref legacyBehavior>
-                  <MenuItem as={Link}>About</MenuItem>
+                  <MenuItem as={Link} bg={path === "/" ? inactiveBg : undefined}
+        color={path === "/" ? '#202023' : inactiveColor}>About</MenuItem>
                 </NextLink>
                 <NextLink href="/works" passHref legacyBehavior>
-                  <MenuItem as={Link}>Works</MenuItem>
+                  <MenuItem as={Link} bg={path === "/" ? inactiveBg : undefined}
+        color={path === "/" ? '#202023' : inactiveColor}>Works</MenuItem>
                 </NextLink>
                 <NextLink href="/contact" passHref legacyBehavior>
-                  <MenuItem as={Link}>Contact</MenuItem>
+                  <MenuItem as={Link} bg={path === "/" ? inactiveBg : undefined}
+        color={path === "/" ? '#202023' : inactiveColor}>Contact</MenuItem>
                 </NextLink>
               </MenuList>
             </Menu>

@@ -39,7 +39,9 @@ interface FeatureProps {
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   return (
-    <Stack direction={"row"} align={"center"} style={{ wordWrap: "normal", maxWidth: "100%", minWidth: "100%" }}>
+    <Stack direction={"row"} align={"center"} style={{ wordWrap: "normal", maxWidth: "100%", minWidth: "100%" }} transition={'all 0.2s ease-in-out'} _hover={{
+      transform: 'scale(1.05)',
+    }}>
       <Flex
         w={8}
         h={8}
@@ -57,11 +59,41 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 
 export default function Skills() {
   return (
-    <Container py={12} id="Skills" style={{ marginLeft: "0", paddingInlineStart: "0" }}>
-      <SimpleGrid columns={{ base: 2, md: 2 }} spacing={{ base: 12, lg: 32 }}>
-        <Stack spacing={4}>
+    <Container py={12} id="Skills" style={{ marginLeft: "0", paddingInlineStart: "0", paddingInlineEnd: "0", alignItems: "center", justifyContent: "center" }}>
+      <SimpleGrid columns={{ base: 2, md: 2, lg: 2 }} spacing={{ base: 12, lg: 32 }}>
+        <Stack spacing={2}>
           <Flex gap={10} direction={{ base: "row", md: "row" }}>
-            <Box style={{ marginLeft: "4px" , minWidth: "100%"}}>
+            <Box style={{ marginLeft: "4px", minWidth: '100%' }}>
+              <Stack
+                spacing={4}
+                divider={
+                  <StackDivider
+                    borderColor={useColorModeValue("gray.100", "gray.700")}
+                    margin={0}
+                  />
+                }
+                width="100%"
+              >
+                <Feature
+                  icon={<Icon as={SiExpress} color={"yellow.500"} w={6} h={6} />}
+                  iconBg={useColorModeValue("yellow.100", "yellow.900")}
+                  text={"Express Js"}
+                />
+                <Feature
+                  icon={<Icon as={SiTypescript} color={"green.500"} w={6} h={6} />}
+                  iconBg={useColorModeValue("green.100", "green.900")}
+                  text={"Typescript"}
+                />
+                <Feature
+                  icon={
+                    <Icon as={DiJavascript1} color={"purple.500"} w={6} h={6} />
+                  }
+                  iconBg={useColorModeValue("purple.100", "purple.900")}
+                  text={"JavaScript"}
+                />
+              </Stack>
+            </Box>
+            <Box style={{ marginLeft: "4px",  minWidth: '100%' }}>
               <Stack
                 spacing={4}
                 divider={
@@ -72,47 +104,18 @@ export default function Skills() {
                 width="100%"
               >
                 <Feature
-                  icon={<Icon as={SiExpress} color={"yellow.500"} w={5} h={5} />}
-                  iconBg={useColorModeValue("yellow.100", "yellow.900")}
-                  text={"Express Js"}
-                />
-                <Feature
-                  icon={<Icon as={SiTypescript} color={"green.500"} w={5} h={5} />}
-                  iconBg={useColorModeValue("green.100", "green.900")}
-                  text={"Typescript"}
-                />
-                <Feature
-                  icon={
-                    <Icon as={DiJavascript1} color={"purple.500"} w={5} h={5} />
-                  }
-                  iconBg={useColorModeValue("purple.100", "purple.900")}
-                  text={"JavaScript"}
-                />
-              </Stack>
-            </Box>
-            <Box style={{ marginLeft: "4px" , minWidth: "100%"}}>
-
-              <Stack
-                spacing={4}
-                divider={
-                  <StackDivider
-                    borderColor={useColorModeValue("gray.100", "gray.700")}
-                  />
-                }
-              >
-                <Feature
-                  icon={<Icon as={FaNodeJs} color={"yellow.500"} w={5} h={5} />}
+                  icon={<Icon as={FaNodeJs} color={"yellow.500"} w={6} h={6} />}
                   iconBg={useColorModeValue("yellow.100", "yellow.900")}
                   text={"Node Js"}
                 />
                 <Feature
-                  icon={<Icon as={SiReact} color={"green.500"} w={5} h={5} />}
+                  icon={<Icon as={SiReact} color={"green.500"} w={6} h={6} />}
                   iconBg={useColorModeValue("green.100", "green.900")}
                   text={"React Js"}
                 />
                 <Feature
                   icon={
-                    <Icon as={SiNextdotjs} color={"purple.500"} w={5} h={5} />
+                    <Icon as={SiNextdotjs} color={"purple.500"} w={6} h={6} />
                   }
                   iconBg={useColorModeValue("purple.100", "purple.900")}
                   text={"Next Js"}
